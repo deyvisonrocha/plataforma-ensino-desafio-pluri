@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use Illuminate\Http\Request;
+use App\Http\Resources\CourseResource;
 use App\Http\Requests\Courses\CourseStoreRequest;
 use App\Http\Requests\Courses\CourseUpdateRequest;
-use App\Http\Resources\CourseResource;
 
 class CourseController extends Controller
 {
@@ -19,10 +19,7 @@ class CourseController extends Controller
     {
         $courses = Course::get()->toArray();
 
-        // return $this->responseOk($courses, 'Lista de cursos');
-        return (new CourseResource($courses))
-            ->response()
-            ->setStatusCode(200);
+        return new CourseResource($courses);
     }
 
     /**
@@ -72,7 +69,7 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         // Validar quando estiver com alunos relacionados quando tiver matriculas
-        
+
         return $course->delete();
     }
 }
