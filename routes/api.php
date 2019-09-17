@@ -14,3 +14,4 @@ use Illuminate\Http\Request;
 */
 
 Route::apiResource('courses', 'CourseController');
+Route::apiResource('students', 'StudentController');
