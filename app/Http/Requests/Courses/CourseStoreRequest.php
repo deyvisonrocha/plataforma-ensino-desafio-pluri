@@ -24,7 +24,7 @@ class CourseStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|unique:courses,title|max:192',
+            'title' => 'required|unique:courses,title|max:191',
             'description' => 'nullable',
         ];
     }

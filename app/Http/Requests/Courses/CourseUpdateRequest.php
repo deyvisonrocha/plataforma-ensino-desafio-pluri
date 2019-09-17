@@ -24,7 +24,7 @@ class CourseUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|unique:courses,title,' . request()->get('id'),
+            'title' => 'required|unique:courses,title,' . request()->get('id') . '|max:191',
             'description' => 'nullable'
         ];
     }
