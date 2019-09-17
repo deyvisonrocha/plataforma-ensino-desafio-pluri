@@ -17,7 +17,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::get()->toArray();
+        $courses = Course::get();
 
         return new CourseResource($courses);
     }
