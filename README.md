@@ -9,6 +9,7 @@
 1. `php artisan key:generate`
 1. Alterar os dados do arquivo `.env` para acesso ao banco de dados.
 1. `php artisan migrate:fresh --seed`
+1. `php artisan serve`
 
 ## Testando API
 
