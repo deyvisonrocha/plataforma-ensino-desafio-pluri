@@ -68,8 +68,10 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        // Validar quando estiver com alunos relacionados quando tiver matriculas
+        if ($course->enrollments()->count()) {
+            $course->enrollments()->delete();
+        }
 
-        return $course->delete();
+        return response()->json()->setStatusCode(200);
     }
 }
