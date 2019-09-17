@@ -15,5 +15,6 @@ use Illuminate\Http\Request;
 
 Route::apiResource('courses', 'CourseController');
 Route::get('students/search', 'StudentSearchController@index');
+Route::get('students/stats', 'StudentStatsController@index');
 Route::apiResource('students', 'StudentController');
 Route::apiResource('enrollments', 'EnrollmentController');
