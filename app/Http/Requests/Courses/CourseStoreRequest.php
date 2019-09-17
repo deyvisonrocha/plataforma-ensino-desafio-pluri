@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Courses;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CourseStoreRequest extends FormRequest
@@ -24,7 +25,11 @@ class CourseStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|unique:courses,title|max:191',
+            'title' => [
+                'required',
+                'max:191',
+                Rule::unique('courses')
+            ],
             'description' => 'nullable',
         ];
     }
