@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Exception;
+use ErrorException;
+use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -58,6 +60,20 @@ class Handler extends ExceptionHandler
 
         if ($exception instanceof ModelNotFoundException) {
             return response()->json(['message' => 'Not Found!'], 404);
+        }
+
+        if ($exception instanceof QueryException) {
+            return response()->json([
+                'message' => 'Error on query',
+                'error' => $exception->getMessage()
+            ], 500);
+        }
+
+        if ($exception instanceof ErrorException) {
+            return response()->json([
+                'message' => 'Internal server error',
+                'error' => $exception->getMessage()
+            ], 500);
         }
 
         return parent::render($request, $exception);
