@@ -10,6 +10,6 @@ $factory->define(Student::class, function (Faker $faker) {
         'name' => $faker->firstName,
         'email' => $faker->companyEmail,
         'gender' => rand(0, 1) ? 'male' : 'female',
-        'birthday' => $faker->dateTimeInInterval('-25 years', '+2 years')
+        'birthday' => $faker->dateTimeBetween('-35 years', '-10 years')
     ];
 });

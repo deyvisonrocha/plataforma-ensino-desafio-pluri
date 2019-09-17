@@ -11,6 +11,6 @@ class EnrollmentTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Enrollment::class, 30)->create();
+        factory(\App\Enrollment::class, 100)->create();
     }
 }
